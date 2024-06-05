@@ -9,15 +9,13 @@ const seven = document.getElementById("seven");
 const eight = document.getElementById("eight");
 const nine = document.getElementById("nine");
 const zero = document.getElementById("zero");
-const dec = document.getElementById("dec");
-
 
 const add = document.getElementById("add");
 const equ = document.getElementById("equ");
 const clear = document.getElementById("clear");
 const sub = document.getElementById("sub");
 const div = document.getElementById("div");
-
+const mul = document.getElementById("mul");
 
 one.addEventListener("click", () => dis.value += 1);
 two.addEventListener("click", () => dis.value += 2);
@@ -29,49 +27,136 @@ seven.addEventListener("click", () => dis.value += 7);
 eight.addEventListener("click", () => dis.value += 8);
 nine.addEventListener("click", () => dis.value += 9);
 zero.addEventListener("click", () => dis.value += 0);
-dec.addEventListener("click", () => alert("Sorry that feature hasn't been developed yet"))
 
-const calculator = [];
+let calculator = "";
+let newNum;
+let op = "";
 
 clear.addEventListener("click", function() {
-    dis.value = "";
-    calculator.length = 0;
-    console.log(calculator);
+    
+    if (dis.value !== "") {
+        dis.value = "";
+
+        console.log("half clear")
+    } else if (dis.value === "") {
+        dis.value = "";
+        calculator = "";
+        
+        console.log("full clear")
+    }
+    
 });
 
 add.addEventListener("click", function() {
+    if (op === ""){
+        newNum = (dis.value);
+    } else if(op === "add"){
+        newNum = (Number(calculator) + Number(dis.value));
+    } else if (op === "sub"){
+        newNum = (Number(calculator) - Number(dis.value));
+    } else if (op === "div"){
+        newNum = (Number(calculator) / Number(dis.value));
+    } else if (op === "mul") {
+        newNum = (Number(calculator) * Number(dis.value));
+    } else {
+        console.log("err");
+    };
 
-    const newNum = (Number(calculator) + Number(dis.value))
-
-    calculator.length = 0;
-    calculator.push(newNum);
+    op = "add";
+    calculator = "";
+    calculator = (newNum);
     dis.value = "";
-    console.log(calculator);
 });
 
 sub.addEventListener("click", function() {
-    const newNum = (Number(calculator) - Number(dis.value))
+    if (op === ""){
+        newNum = (dis.value);
+    } else if(op === "add"){
+        newNum = (Number(calculator) + Number(dis.value));
+    } else if (op === "sub"){
+        newNum = (Number(calculator) - Number(dis.value));
+    } else if (op === "div"){
+        newNum = (Number(calculator) / Number(dis.value));
+    } else if (op === "mul") {
+        newNum = (Number(calculator) * Number(dis.value));
+    } else {
+        console.log("err");
+    };
 
-    calculator.length = 0;
-    calculator.push(newNum);
+    op = "sub";
+    calculator = "";
+    calculator = (newNum);
     dis.value = "";
-    console.log(calculator);
 });
 
 div.addEventListener("click", function() {
-    const newNum = (Number(calculator) / Number(dis.value))
+    if (op === ""){
+        newNum = (dis.value);
+    } else if(op === "add"){
+        newNum = (Number(calculator) + Number(dis.value));
+    } else if (op === "sub"){
+        newNum = (Number(calculator) - Number(dis.value));
+    } else if (op === "div"){
+        newNum = (Number(calculator) / Number(dis.value));
+    } else if (op === "mul") {
+        newNum = (Number(calculator) * Number(dis.value));
+    } else {
+        console.log("err");
+    };
 
-    calculator.length = 0;
-    calculator.push(newNum);
+    op = "div";
+    calculator = "";
+    calculator = (newNum);
     dis.value = "";
-    console.log(calculator);
 });
 
+mul.addEventListener("click", function() {
+    if (op === ""){
+        newNum = (dis.value);
+    } else if(op === "add"){
+        newNum = (Number(calculator) + Number(dis.value));
+    } else if (op === "sub"){
+        newNum = (Number(calculator) - Number(dis.value));
+    } else if (op === "div"){
+        newNum = (Number(calculator) / Number(dis.value));
+    } else if (op === "mul") {
+        newNum = (Number(calculator) * Number(dis.value));
+    } else {
+        console.log("err");
+    };
+
+    op = "mul";
+    calculator = "";
+    calculator = (newNum);
+    dis.value = "";
+});
 
 equ.addEventListener("click", function() {
-    dis.value = calculator;
-    const test = Number(calculator);
+    if (op === ""){
+        newNum = (dis.value);
+        dis.value = newNum;
+        console.log(dis.value)
+    } else if(op === "add"){
+        newNum = (Number(calculator) + Number(dis.value));
+        dis.value = newNum;
+        console.log(dis.value)
+    } else if (op === "sub"){
+        newNum = (Number(calculator) - Number(dis.value));
+        dis.value = newNum;
+        console.log(dis.value)
+    } else if (op === "div"){
+        newNum = (Number(calculator) / Number(dis.value));
+        dis.value = newNum;
+        console.log(dis.value)
+    } else if (op === "mul") {
+        newNum = (Number(calculator) * Number(dis.value));
+        dis.value = newNum;
+        console.log(dis.value)
+    } else {
+        console.log("err");
+    };
 
-    console.log(calculator);
-    console.log(test);
+    op = "";
+    calculator = "";
+    calculator = (newNum);
 });
